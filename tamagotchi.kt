@@ -7,9 +7,10 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var vivo = vivo;
     var insanidade = insanidade;
     var tedio = tedio;
+    var vidaDoUsuario = true
 
     fun adotar(){
-        if( vivo == true){
+        if(vivo == true){
             this.repetir()
 
         }
@@ -17,11 +18,15 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             print("Deseja adotar um novo tamagushi? (S ou N) ")
             var read3 = readLine()?: ""
             var pick = read3
-            if(pick == "S"){
+            if(pick == "S" && vidaDoUsuario == true){
                 this.vivo = true
             }
             else{
-                print("Obrigadda por jogar!")
+               if (vidaDoUsuario == false) {
+                    print("Você morreu, te encontraremos na próxima vida!")
+               } else {
+                   print("Obrigada por jogar!")
+               }
             }
         }
     }
@@ -144,9 +149,54 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         println("${this.reagir()}")
         return this.idade
     }
-    
+
+    fun roletaRussa(){
+        val listaAleatoria = listOf<Int>(1, 2, 3, 4, 5, 6)
+        var tamagotchi = listaAleatoria.random()
+        var usuario = listaAleatoria.random()
+
+        if (tamagotchi == 1){
+            this.vivo = false
+            this.adotar()
+
+            if (usuario == 1){
+                this.vidaDoUsuario = true
+                this.adotar()
+            }
+        } else if (usuario == 1){
+            this.vidaDoUsuario = false
+            this.adotar()
+
+            if (usuario == 1){
+                this.vivo = true
+                this.adotar()
+            }
+        } else if (usuario != 1 && tamagotchi != 1){
+            println("Que sorte! Todos estão vivos ainda")
+        }
+
+    }
+
     fun brincar(){
-        
+        var opcao: String = ""
+
+        if (insanidade >= 4){
+            println("historias || roleta russa")
+            opcao = readLine()?: ""
+
+            if (opcao == "historias"){
+                /*this.historia()*/
+            } else if(opcao == "roleta russa") {
+                this.roletaRussa()
+            }
+        } else {
+            println("historias || ")
+            opcao = readLine()?: ""
+
+            if (opcao == "historias"){
+                /*this.historia()*/
+            }
+        }
     }
 
     fun reagir(): Any {
@@ -159,18 +209,18 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         }
         return reacaoP
     }
-    
+
     fun calcularHumor(){
 
         if(this.saude <= 0 && this.insanidade >= 10){
             println("Seu tamagushi morreu de tanto birutar, LOUCO LOUCO")
-            
+
         } else if (this.comida <= 0 || this.saude <= 0 || this.comida > 10 || this.saude > 10){
             println("VOCÊ MATOU O SEU BICHINHO! SEU MONSTROOOOO!!")
-            
+
         } else if (this.tedio >= 5){
             println("Eu vou morrer de tédioooooo!! Brinca comigo??")
-            
+
         } else if (this.comida in 5..9 && this.saude in 5..9){
             println("Estou muito mal! Cuide de mim!")
 
@@ -195,7 +245,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
 fun main(){
     var tamagushi = Tamagushi("", 10, 10, 0, true, 0, 3)
-    
+
     while(true){
         tamagushi.adotar()
     }
