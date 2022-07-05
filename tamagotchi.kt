@@ -9,6 +9,40 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var tedio = tedio;
     var vidaDoUsuario = true
 
+    var contador: Int = 0;
+
+    fun historia(){
+        contador += 1
+
+        if(contador == 1){
+            print("Vou contar a historia do dia em que fui ao zoologico!")
+            var leitura = readLine()?: ""
+            print("Era uma tarde ensolarada, quando fui visitar diversos animaizinhos")
+            var leitura2 = readLine()?: ""
+            print("Foi muito divertido, conheci a senhora zebra, o senhor leao, o senhor macaco, a senhora cobra e a " +
+                    "amiga jabuti")
+            var leitura3 = readLine()?: ""
+            print("Quando cheguei em casa estava com tanto soninho que acabei dorminfo fácil!")
+            var leitura4 = readLine()?: ""
+            println("Espero logo logo ir novamente! Fim da historia do meu dia no zoologico.")
+            println("Sua insanidade: $insanidade")
+        }else if(contador == 2){
+            print("Vou contar a historia do dia em fui atras de um tesouro!")
+            var leitura5 = readLine()?: ""
+            print("Era uma tarde calma, eu e meus amigos encontramos um mapa re resolvemos segui rate o X")
+            var leitura6 = readLine()?: ""
+            print("Foi uma longa jornada pelo parquinho, subimos montanhas (escorregador), enfrentamos monstros " +
+                    "(gangorra e")
+            var leitura7 = readLine()?: ""
+            print("viajamos de barco (balanco)! No final chegamos ao X em um mar de areia (caixa de brincar) e foi " +
+                    "muito divertido")
+            var leitura8 = readLine()?: ""
+            println("Espero logo logo brincar novamente! Essa foi a historia da caca ao tesouro!")
+            println("Sua insanidade: $insanidade")
+        }
+    }
+
+
     fun adotar(){
         if(vivo == true){
             this.repetir()
@@ -22,11 +56,11 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                 this.vivo = true
             }
             else{
-               if (vidaDoUsuario == false) {
+                if (vidaDoUsuario == false) {
                     print("Você morreu, te encontraremos na próxima vida!")
-               } else {
-                   print("Obrigada por jogar!")
-               }
+                } else {
+                    print("Obrigada por jogar!")
+                }
             }
         }
     }
@@ -185,7 +219,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             opcao = readLine()?: ""
 
             if (opcao == "historias"){
-                /*this.historia()*/
+                this.historia()
             } else if(opcao == "roleta russa") {
                 this.roletaRussa()
             }
