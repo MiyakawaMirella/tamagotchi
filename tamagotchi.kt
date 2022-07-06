@@ -7,16 +7,17 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var vivo = vivo;
     var insanidade = insanidade;
     var tedio = tedio;
+    var nomeDoUsuario = ""
     var vidaDoUsuario = true
     var contador: Int = 0;
     var dinheiro: Int = 0;
-    
-        fun dinheiro(moedas: Int){
+
+    fun dinheiro(moedas: Int){
         if(moedas < 0){
             this.dinheiro -= moedas
-                if(this.dinheiro < 0){
-                    this.dinheiro = 0
-                }
+            if(this.dinheiro < 0){
+                this.dinheiro = 0
+            }
         }
         else{
             this.dinheiro += moedas
@@ -74,7 +75,8 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                     "suficiente, entao os enfiei emmeu bolso sem ninguem ver!")
             var leitura8 = readLine()?: ""
             println("Nao me arrependo! Essa foi a historia do meu primeiro roubo!")
-            println("Sua insanidade: ${this.insanidade+1}")
+            this.insanidade+=1
+            println("Sua insanidade: ${this.insanidade}")
         }else if(contador == 5){
             print("Vou contar a historia do melhor jantar da minha vida!")
             var leitura9 = readLine()?: ""
@@ -87,7 +89,8 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             print("Segurei, torci e empalhei direitinho, por fim no faltou cozinhar na fogueira!")
             var leitura12 = readLine()?: ""
             println("Foi o jantar mais delicioso que ja tive, meu querido gatinho!")
-            println("Sua insanidade: ${this.insanidade+2}")
+            this.insanidade=2
+            println("Sua insanidade: ${this.insanidade}")
         }else if(contador == 6){
             print("Lobo bobo, bobo lobo, sua pele impura fica tao linda enquanto me esquenta!")
             var leitura13 = readLine()?: ""
@@ -98,7 +101,8 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             print("Pelo menos nao ate a proxima historia")
             var leitura16 = readLine()?: ""
             println("haha hahaha ha haha ha hahahaha haha hahaha ha")
-            println("Sua insanidade: ${this.insanidade+10000}")
+            this.insanidade=100
+            println("Sua insanidade: ${this.insanidade}")
         }
     }
 
@@ -117,7 +121,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                     if (vidaDoUsuario == false) {
                         print("Você morreu, te encontraremos na próxima vida!")
                     }
-            }else if(pick == "N"){
+                }else if(pick == "N"){
                     print("Obrigada por jogar!")
                 }
 
@@ -192,7 +196,12 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         print("Digite aqui o nome do seu tamagushi: ")
         var read = readLine()?: ""
         this.nome = read
-        println("${this.nome} esta com ${this.comida} de fome e ${this.saude} de saude!")
+        println("${this.nome} esta com ${this.comida} de comida e ${this.saude} de saude!")
+        //alterei a função nomear para inserir o nome do usuário
+        println("Mas antes de brincar, ${this.nome} precisa te conhecer! Qual é o seu nome?")
+        var nomeUser = readLine()?:""
+        this.nomeDoUsuario = nomeUser
+        println("Ok, ${this.nomeDoUsuario}! Vamos brincar!!!")
     }
 
     fun repetir(){
@@ -245,34 +254,44 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     }
 
     fun roletaRussa(){
-        println("Girando o tambor da arma...")
-        println("...")
+        //adicionando texto roleta russa
+        println("Girando tambor...")
+        var roleta1 = readLine()?:""
+        print("...")
+        var roleta2 = readLine()?:""
+
         val listaAleatoria = listOf<Int>(1, 2, 3, 4, 5, 6)
         var tamagotchi = listaAleatoria.random()
         var usuario = listaAleatoria.random()
 
-        println("*Puxa gatilho!*")
-
         if (tamagotchi == 1){
             this.vivo = false
-            println("O tamagutshi morreu")
+            println("POW!!")
+            var roleta3 = readLine()?:""
+            println("O seu tamagotchi está morto...")
             this.adotar()
 
+
             if (usuario == 1){
+                this.vidaDoUsuario = true
+                println("plek..")
+                var roleta4 = readLine()?:""
                 println("Você está vivo")
                 this.adotar()
             }
         } else if (usuario == 1){
             this.vidaDoUsuario = false
-            println("Você morreu")
+            println("POW!")
+            var roleta5 = readLine()?:""
+            println("Você está morto! Te vejo na próxima vida!")
             this.adotar()
 
-            if (tamagotchi == 1){
+            if (usuario == 1){
                 this.vivo = true
-                print("O tamagutshi está vivo")
                 this.adotar()
             }
-        } else if (usuario != 1 && tamagotchi != 1){
+        }
+        if (usuario != 1 && tamagotchi != 1){
             println("Que sorte! Todos estão vivos ainda")
         }
 
@@ -298,7 +317,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                     println("Você perdeu!! UUUUUHHHH BURROOOOO")
                     dinheiro(-3)
                 }
-                
+
                 println("Deseja jogar novamente? (S | N)")
                 var resposta = (readLine()?: "").uppercase()
             } while (resposta == "N")
