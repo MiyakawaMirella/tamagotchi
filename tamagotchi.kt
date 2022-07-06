@@ -10,7 +10,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var nomeDoUsuario = ""
     var vidaDoUsuario = true
     var contador: Int = 0;
-    var dinheiro: Int = 0;
+    var dinheiro: Int = 5; //alterando para iniciar com 5 moedas
 
     fun dinheiro(moedas: Int){
         if(moedas < 0){
@@ -26,7 +26,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
     fun historia(){
         contador += 1
-
+ //alterando a insanidade, criando um nível falso para não matar o bichinho de insanidade de primeira
         if(contador == 1){
             print("Vou contar a historia do dia em que fui ao zoologico!")
             var leitura = readLine()?: ""
@@ -39,6 +39,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             var leitura4 = readLine()?: ""
             println("Espero logo logo ir novamente! Fim da historia do meu dia no zoologico.")
             println("Sua insanidade: $insanidade")
+            
         }else if(contador == 2){
             print("Vou contar a historia do dia em fui atras de um tesouro!")
             var leitura5 = readLine()?: ""
@@ -52,6 +53,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             var leitura8 = readLine()?: ""
             println("Espero logo logo brincar novamente! Essa foi a historia da caca ao tesouro!")
             println("Sua insanidade: $insanidade")
+            
         }else if(contador == 3){
             print("Vou contar a historia do dia em que resgatei um gatinho!")
             var leitura5 = readLine()?: ""
@@ -64,6 +66,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Agora ele esta morando comigo, pelo menos por um tempo! Essa foi a historia de quando encontrei " +
                     "um gatinho!")
             println("Sua insanidade: $insanidade")
+            
         }else if(contador == 4){
             print("Vou contar a historia do dia em que fui na americanas!")
             var leitura5 = readLine()?: ""
@@ -77,6 +80,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Nao me arrependo! Essa foi a historia do meu primeiro roubo!")
             this.insanidade+=1
             println("Sua insanidade: ${this.insanidade}")
+            
         }else if(contador == 5){
             print("Vou contar a historia do melhor jantar da minha vida!")
             var leitura9 = readLine()?: ""
@@ -89,8 +93,9 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             print("Segurei, torci e empalhei direitinho, por fim no faltou cozinhar na fogueira!")
             var leitura12 = readLine()?: ""
             println("Foi o jantar mais delicioso que ja tive, meu querido gatinho!")
-            this.insanidade=2
+            this.insanidade+=2
             println("Sua insanidade: ${this.insanidade}")
+            
         }else if(contador == 6){
             print("Lobo bobo, bobo lobo, sua pele impura fica tao linda enquanto me esquenta!")
             var leitura13 = readLine()?: ""
@@ -101,8 +106,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             print("Pelo menos nao ate a proxima historia")
             var leitura16 = readLine()?: ""
             println("haha hahaha ha haha ha hahahaha haha hahaha ha")
-            this.insanidade=100
-            println("Sua insanidade: ${this.insanidade}")
+            println("Sua insanidade: 100")
         }
     }
 
@@ -197,7 +201,6 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         var read = readLine()?: ""
         this.nome = read
         println("${this.nome} esta com ${this.comida} de comida e ${this.saude} de saude!")
-        //alterei a função nomear para inserir o nome do usuário
         println("Mas antes de brincar, ${this.nome} precisa te conhecer! Qual é o seu nome?")
         var nomeUser = readLine()?:""
         this.nomeDoUsuario = nomeUser
@@ -254,7 +257,6 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     }
 
     fun roletaRussa(){
-        //adicionando texto roleta russa
         println("Girando tambor...")
         var roleta1 = readLine()?:""
         print("...")
@@ -320,13 +322,12 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
                 println("Deseja jogar novamente? (S | N)")
                 var resposta = (readLine()?: "").uppercase()
-            } while (resposta == "N")
+            } while (resposta == "S")
         } else {
             println("Você não pode jogar! Você está pobre!")
         }
     }
     
-    //Adicionando novo jogo
      fun pedraPapelTesoura(){
        do {
            var listaP = listOf<String>("PEDRA", "PAPEL", "TESOURA")
@@ -343,36 +344,36 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                if (usuario == "PEDRA" || usuario == "PAPEL" || usuario == "TESOURA"){
                    if (tamagushi == usuario){
                        println("Impateee!! Quer jogar de novo para desempatar!??")
-                       placarTamagushi ++
-                       placarUsuario ++
+                       placarTamagushi++
+                       placarUsuario++
 
                    } else if (tamagushi == "PEDRA" && usuario == "PAPEL"){
                        println("Você ganhooouuu!!!!")
-                       placarUsuario ++
+                       placarUsuario++
 
                    } else if (tamagushi == "PEDRA" && usuario == "TESOURA"){
                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi ++
+                       placarTamagushi++
 
                    }  else if (tamagushi == "PAPEL" && usuario == "TESOURA"){
                        println("Você ganhooouuu!!!!")
-                       placarUsuario ++
+                       placarUsuario++
 
                    } else if (tamagushi == "PAPEL" && usuario == "PEDRA"){
                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi ++
+                       placarTamagushi++
 
                    }  else if (tamagushi == "TESOURA" && usuario == "PEDRA"){
                        println("Você ganhooouuu!!!!")
-                       placarUsuario ++
+                       placarUsuario++
 
                    } else if (tamagushi == "TESOURA" && usuario == "PAPEL"){
                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi ++
+                       placarTamagushi++
 
                    }
                } else {
-                        println("Dado inválido")
+                        println("Opção inválida") //trocando a mensagem
                         continue
                }
            }
@@ -423,12 +424,13 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
        } while (resposta == "S")
     }
 
-     //Atualizando o menu brincar
     fun brincar(){
         var opcao: String = ""
+        //Impossibilitando informações fora das opções dadas
 
         if (insanidade >= 4){
-            println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || roleta russa (R)")
+            do {
+                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || roleta russa (R)")
             opcao = (readLine()?: "").uppercase()
 
             if (opcao == "H"){
@@ -439,9 +441,17 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                 this.pedraPapelTesoura()
             } else if(opcao == "R") {
                 this.roletaRussa()
+            } else {
+                println("Opção inválida")
             }
+            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao == "R")
+            
         } else {
             println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) ||")
+            opcao = (readLine()?: "").uppercase()
+
+            do {
+                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || roleta russa (R)")
             opcao = (readLine()?: "").uppercase()
 
             if (opcao == "H"){
@@ -450,7 +460,10 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                 this.cacaNiquel()
             } else if (opcao == "P"){
                 this.pedraPapelTesoura()
+            } else {
+                println("Opção inválida")
             }
+            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao == "R")
         }
     }
 
@@ -467,7 +480,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
     fun calcularHumor(){
 
-        if(this.saude <= 0 && this.insanidade >= 10){
+        if(this.saude <= 0 && this.insanidade >= 20){ //aumentando o limite de insanidade
             println("Seu tamagushi morreu de tanto birutar, LOUCO LOUCO")
 
         } else if (this.comida <= 0 || this.saude <= 0 || this.comida > 10 || this.saude > 10){
