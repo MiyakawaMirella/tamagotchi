@@ -10,7 +10,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var nomeDoUsuario = ""
     var vidaDoUsuario = true
     var contador: Int = 0;
-    var dinheiro: Int = 5; //alterando para iniciar com 5 moedas
+    var dinheiro: Int = 5;
 
     fun dinheiro(moedas: Int){
         if(moedas < 0){
@@ -26,7 +26,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
     fun historia(){
         contador += 1
- //alterando a insanidade, criando um nível falso para não matar o bichinho de insanidade de primeira
+
         if(contador == 1){
             print("Vou contar a historia do dia em que fui ao zoologico!")
             var leitura = readLine()?: ""
@@ -39,7 +39,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             var leitura4 = readLine()?: ""
             println("Espero logo logo ir novamente! Fim da historia do meu dia no zoologico.")
             println("Sua insanidade: $insanidade")
-            
+
         }else if(contador == 2){
             print("Vou contar a historia do dia em fui atras de um tesouro!")
             var leitura5 = readLine()?: ""
@@ -53,7 +53,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             var leitura8 = readLine()?: ""
             println("Espero logo logo brincar novamente! Essa foi a historia da caca ao tesouro!")
             println("Sua insanidade: $insanidade")
-            
+
         }else if(contador == 3){
             print("Vou contar a historia do dia em que resgatei um gatinho!")
             var leitura5 = readLine()?: ""
@@ -66,7 +66,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Agora ele esta morando comigo, pelo menos por um tempo! Essa foi a historia de quando encontrei " +
                     "um gatinho!")
             println("Sua insanidade: $insanidade")
-            
+
         }else if(contador == 4){
             print("Vou contar a historia do dia em que fui na americanas!")
             var leitura5 = readLine()?: ""
@@ -80,7 +80,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Nao me arrependo! Essa foi a historia do meu primeiro roubo!")
             this.insanidade+=1
             println("Sua insanidade: ${this.insanidade}")
-            
+
         }else if(contador == 5){
             print("Vou contar a historia do melhor jantar da minha vida!")
             var leitura9 = readLine()?: ""
@@ -95,7 +95,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Foi o jantar mais delicioso que ja tive, meu querido gatinho!")
             this.insanidade+=2
             println("Sua insanidade: ${this.insanidade}")
-            
+
         }else if(contador == 6){
             print("Lobo bobo, bobo lobo, sua pele impura fica tao linda enquanto me esquenta!")
             var leitura13 = readLine()?: ""
@@ -327,143 +327,178 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
             println("Você não pode jogar! Você está pobre!")
         }
     }
-    
-     fun pedraPapelTesoura(){
-       do {
-           var listaP = listOf<String>("PEDRA", "PAPEL", "TESOURA")
-           var placarTamagushi = 0
-           var placarUsuario = 0
-           var humor = "Bem"
 
-           for(i in 1..3) {
-               var tamagushi = listaP.random()
+    fun pedraPapelTesoura(){
+        do {
+            var listaP = listOf<String>("PEDRA", "PAPEL", "TESOURA")
+            var placarTamagushi = 0
+            var placarUsuario = 0
+            var humor = "Bem"
 
-               print("Você vai escolher o que? (PEDRA || PAPEL || TESOURA) ")
-               var usuario = (readLine()?: "").uppercase()
+            for(i in 1..3) {
+                var tamagushi = listaP.random()
 
-               if (usuario == "PEDRA" || usuario == "PAPEL" || usuario == "TESOURA"){
-                   if (tamagushi == usuario){
-                       println("Impateee!! Quer jogar de novo para desempatar!??")
-                       placarTamagushi++
-                       placarUsuario++
+                print("Você vai escolher o que? (PEDRA || PAPEL || TESOURA) ")
+                var usuario = (readLine()?: "").uppercase()
 
-                   } else if (tamagushi == "PEDRA" && usuario == "PAPEL"){
-                       println("Você ganhooouuu!!!!")
-                       placarUsuario++
+                if (usuario == "PEDRA" || usuario == "PAPEL" || usuario == "TESOURA"){
+                    if (tamagushi == usuario){
+                        println("Impateee!! Quer jogar de novo para desempatar!??")
+                        placarTamagushi++
+                        placarUsuario++
 
-                   } else if (tamagushi == "PEDRA" && usuario == "TESOURA"){
-                       println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi++
+                    } else if (tamagushi == "PEDRA" && usuario == "PAPEL"){
+                        println("Você ganhooouuu!!!!")
+                        placarUsuario++
 
-                   }  else if (tamagushi == "PAPEL" && usuario == "TESOURA"){
-                       println("Você ganhooouuu!!!!")
-                       placarUsuario++
+                    } else if (tamagushi == "PEDRA" && usuario == "TESOURA"){
+                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
+                        placarTamagushi++
 
-                   } else if (tamagushi == "PAPEL" && usuario == "PEDRA"){
-                       println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi++
+                    }  else if (tamagushi == "PAPEL" && usuario == "TESOURA"){
+                        println("Você ganhooouuu!!!!")
+                        placarUsuario++
 
-                   }  else if (tamagushi == "TESOURA" && usuario == "PEDRA"){
-                       println("Você ganhooouuu!!!!")
-                       placarUsuario++
+                    } else if (tamagushi == "PAPEL" && usuario == "PEDRA"){
+                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
+                        placarTamagushi++
 
-                   } else if (tamagushi == "TESOURA" && usuario == "PAPEL"){
-                       println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
-                       placarTamagushi++
+                    }  else if (tamagushi == "TESOURA" && usuario == "PEDRA"){
+                        println("Você ganhooouuu!!!!")
+                        placarUsuario++
 
-                   }
-               } else {
-                        println("Opção inválida") //trocando a mensagem
-                        continue
-               }
-           }
+                    } else if (tamagushi == "TESOURA" && usuario == "PAPEL"){
+                        println("$nome ganhooooouuu!! Quer ser massacrado de novo por um tamagotchi??")
+                        placarTamagushi++
 
-           if (placarUsuario == 3 && placarTamagushi == 0){
-               println("Aaaaaaaaaaaah não acredito que você ganhou! Não jogo mais com você! Você está fazendo maço!! Aff ")
-               humor = "morrendo de raiva"
+                    }
+                } else {
+                    println("Opção inválida")
+                    continue
+                }
+            }
 
-           } else if (placarUsuario == 2 && placarTamagushi == 1){
-               println("Não gostei, achei robado! Quero revance! A única rodada que contou foi a que eu levei!")
-               humor = "triste"
+            if (placarUsuario == 3 && placarTamagushi == 0){
+                println("Aaaaaaaaaaaah não acredito que você ganhou! Não jogo mais com você! Você está fazendo maço!! Aff ")
+                humor = "morrendo de raiva"
 
-           } else if (placarUsuario == 1 && placarTamagushi == 2){
-               println("GANHEEEEEI GANHEEEEI, foi sofrido, mas ganhei!!")
-               humor = "felicidade genuína"
+            } else if (placarUsuario == 2 && placarTamagushi == 1){
+                println("Não gostei, achei robado! Quero revance! A única rodada que contou foi a que eu levei!")
+                humor = "triste"
 
-           } else if (placarUsuario == placarTamagushi){
-               println("Impatamos, bora desempatar??")
-               humor = "bem"
-               
-           } else {
-               println("Ganhei! Foi MUITO fácil! Você não sabe jogar direito")
-               humor = "ganhei, esse é o meu humor: DETONAR VOCÊ É A MINHA ALEGRIA"
+            } else if (placarUsuario == 1 && placarTamagushi == 2){
+                println("GANHEEEEEI GANHEEEEI, foi sofrido, mas ganhei!!")
+                humor = "felicidade genuína"
 
-           }
+            } else if (placarUsuario == placarTamagushi){
+                println("Impatamos, bora desempatar??")
+                humor = "bem"
 
-           println("Humor: $humor")
-           var resposta: String
+            } else {
+                println("Ganhei! Foi MUITO fácil! Você não sabe jogar direito")
+                humor = "ganhei, esse é o meu humor: DETONAR VOCÊ É A MINHA ALEGRIA"
 
-           if (humor == "morrendo de raiva"){
-               print("Seu tamagoshi está com muita raiva! Para continuar o $nome deseja um pedido de desculpas! \n Deseja continuar a sua amizade com o seu bichinho? (S | N)")
-               resposta = (readLine()?: "").uppercase()
-               if (resposta == "S"){
-                   println("Você: ME PERDOAAAAAAA \n *chorando alto* \n VOCÊ É O MEU ÚNICO AMIGO!!! NÃO GANHO MAIS DE VOCÊ!!! PROMETOOOOOOO")
+            }
 
-                   println("Deseja jogar novamente? (S | N)")
-                   resposta = (readLine()?: "").uppercase()
+            println("Humor: $humor")
+            var resposta: String
 
-               } else {
-                   println("O tamagoshi se recusa a jogar esse jogo mais uma vez! ")
-               }
+            if (humor == "morrendo de raiva"){
+                print("Seu tamagoshi está com muita raiva! Para continuar o $nome deseja um pedido de desculpas! \n Deseja continuar a sua amizade com o seu bichinho? (S | N)")
+                resposta = (readLine()?: "").uppercase()
+                if (resposta == "S"){
+                    println("Você: ME PERDOAAAAAAA \n *chorando alto* \n VOCÊ É O MEU ÚNICO AMIGO!!! NÃO GANHO MAIS DE VOCÊ!!! PROMETOOOOOOO")
 
-           } else {
-               println("Deseja jogar novamente? (S | N)")
-               resposta = (readLine()?: "").uppercase()
-           }
+                    println("Deseja jogar novamente? (S | N)")
+                    resposta = (readLine()?: "").uppercase()
 
-       } while (resposta == "S")
+                } else {
+                    println("O tamagoshi se recusa a jogar esse jogo mais uma vez! ")
+                }
+
+            } else {
+                println("Deseja jogar novamente? (S | N)")
+                resposta = (readLine()?: "").uppercase()
+            }
+
+        } while (resposta == "S")
+    }
+    //criando o jogo
+    fun imparOuPar() {
+        var listaN = (0..10).toList()
+        var tamagushiNum = listaN.random()
+
+        do {
+            println("Escolha um número de 0 a 10")
+            var usuarioNum: Int = (readLine()?: "0").toIntOrNull() ?: 0
+
+            println("Ímpar(I) ou par(P) ?")
+            var escolha = (readLine()?: "").uppercase()
+
+            do {
+                println("Tente novamente!! \n Escolha um número de 0 a 10")
+                var usuarioNum: Int = (readLine()?: "0").toIntOrNull() ?: 0
+
+            } while (listaN.contains(usuarioNum))
+
+            var soma = tamagushiNum + usuarioNum
+            if (soma % 2 == 0 && escolha == "P"){
+                dinheiro(2)
+                println("Você ganhou!! Parabéns \n dinheiro: $dinheiro")
+            } else if (soma % 2 != 0 && escolha == "I"){
+                dinheiro(2)
+                println("Você ganhou!! Parabéns \n dinheiro: $dinheiro")
+            } else {
+                println("$nome ganhou!!!")
+            }
+            println("Deseja jogar novamente? (S | N)")
+            var resposta = (readLine()?: "").uppercase()
+
+        } while (resposta == "S")
     }
 
     fun brincar(){
         var opcao: String = ""
-        //Impossibilitando informações fora das opções dadas
-
+        //arrumando o que eu tinha copiado errado
         if (insanidade >= 4){
             do {
-                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || roleta russa (R)")
-            opcao = (readLine()?: "").uppercase()
+                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || ímpar ou par (I) || roleta russa (R)")
+                opcao = (readLine()?: "").uppercase()
 
-            if (opcao == "H"){
-                this.historia()
-            } else if (opcao == "C") {
-                this.cacaNiquel()
-            } else if (opcao == "P"){
-                this.pedraPapelTesoura()
-            } else if(opcao == "R") {
-                this.roletaRussa()
-            } else {
-                println("Opção inválida")
-            }
-            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao == "R")
-            
+                if (opcao == "H"){
+                    this.historia()
+                } else if (opcao == "C") {
+                    this.cacaNiquel()
+                } else if (opcao == "P"){
+                    this.pedraPapelTesoura()
+                } else if (opcao == "I"){
+                    this.imparOuPar()
+                }  else if (opcao == "R"){
+                    this.roletaRussa()
+                } else {
+                    println("Opção inválida")
+                }
+
+            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao =="I" || opcao == "R")
+
         } else {
-            println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) ||")
-            opcao = (readLine()?: "").uppercase()
-
             do {
-                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || roleta russa (R)")
-            opcao = (readLine()?: "").uppercase()
+                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || ímpar ou par (I)")
+                opcao = (readLine()?: "").uppercase()
 
-            if (opcao == "H"){
-                this.historia()
-            } else if (opcao == "C") {
-                this.cacaNiquel()
-            } else if (opcao == "P"){
-                this.pedraPapelTesoura()
-            } else {
-                println("Opção inválida")
-            }
-            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao == "R")
+                if (opcao == "H"){
+                    this.historia()
+                } else if (opcao == "C") {
+                    this.cacaNiquel()
+                } else if (opcao == "P"){
+                    this.pedraPapelTesoura()
+                } else if (opcao == "I"){
+                    this.imparOuPar()
+                } else {
+                    println("Opção inválida")
+                }
+
+            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao =="I")
         }
     }
 
@@ -480,7 +515,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
     fun calcularHumor(){
 
-        if(this.saude <= 0 && this.insanidade >= 20){ //aumentando o limite de insanidade
+        if(this.saude <= 0 && this.insanidade >= 20){
             println("Seu tamagushi morreu de tanto birutar, LOUCO LOUCO")
 
         } else if (this.comida <= 0 || this.saude <= 0 || this.comida > 10 || this.saude > 10){
