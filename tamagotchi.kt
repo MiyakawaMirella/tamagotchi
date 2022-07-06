@@ -9,6 +9,19 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     var tedio = tedio;
     var vidaDoUsuario = true
     var contador: Int = 0;
+    var dinheiro: Int = 0;
+    
+        fun dinheiro(moedas: Int){
+        if(moedas < 0){
+            this.dinheiro -= moedas
+                if(this.dinheiro < 0){
+                    this.dinheiro = 0
+                }
+        }
+        else{
+            this.dinheiro += moedas
+        }
+    }
 
     fun historia(){
         contador += 1
