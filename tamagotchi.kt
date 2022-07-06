@@ -232,30 +232,46 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     }
 
     fun roletaRussa(){
+        println("Girando o tambor da arma...")
+        println("...")
         val listaAleatoria = listOf<Int>(1, 2, 3, 4, 5, 6)
         var tamagotchi = listaAleatoria.random()
         var usuario = listaAleatoria.random()
 
+        println("*Puxa gatilho!*")
+
         if (tamagotchi == 1){
             this.vivo = false
+            println("O tamagutshi morreu")
             this.adotar()
 
             if (usuario == 1){
-                this.vidaDoUsuario = true
+                println("Você está vivo")
                 this.adotar()
             }
         } else if (usuario == 1){
             this.vidaDoUsuario = false
+            println("Você morreu")
             this.adotar()
 
-            if (usuario == 1){
+            if (tamagotchi == 1){
                 this.vivo = true
+                print("O tamagutshi está vivo")
                 this.adotar()
             }
         } else if (usuario != 1 && tamagotchi != 1){
             println("Que sorte! Todos estão vivos ainda")
         }
 
+    }
+
+    fun cacaNiquel(){
+        var listaDePossibilidades = listOf<String>("Maça", "Banana", "Laranja")
+        var casa1 = listaDePossibilidades.random()
+        var casa2 = listaDePossibilidades.random()
+        var casa3 = listaDePossibilidades.random()
+        
+        println()
     }
 
     fun brincar(){
