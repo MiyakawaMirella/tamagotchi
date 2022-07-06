@@ -279,32 +279,56 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
     }
 
     fun cacaNiquel(){
-        var listaDePossibilidades = listOf<String>("Maça", "Banana", "Laranja")
-        var casa1 = listaDePossibilidades.random()
-        var casa2 = listaDePossibilidades.random()
-        var casa3 = listaDePossibilidades.random()
-        
-        println()
+        if (this.dinheiro >= 3){
+            do {
+                var listaDePossibilidades = listOf<String>("Maça", "Banana", "Laranja")
+                var casa1 = listaDePossibilidades.random()
+                var casa2 = listaDePossibilidades.random()
+                var casa3 = listaDePossibilidades.random()
+
+                println("$casa1, $casa2, $casa3")
+
+                if (casa1 != casa2 && casa1 != casa3){
+                    println("Você ganhoooouu!! Todos foram diferentes!")
+                    dinheiro(3)
+                } else if (casa1 == casa2 && casa1 == casa3){
+                    println("Você ganhooooooouu!! Todos foram iguais!!")
+                    dinheiro(3)
+                } else {
+                    println("Você perdeu!! UUUUUHHHH BURROOOOO")
+                    dinheiro(-3)
+                }
+                
+                println("Deseja jogar novamente? (S | N)")
+                var resposta = (readLine()?: "").uppercase()
+            } while (resposta == "N")
+        } else {
+            println("Você não pode jogar! Você está pobre!")
+        }
     }
 
     fun brincar(){
         var opcao: String = ""
 
         if (insanidade >= 4){
-            println("historias || roleta russa")
-            opcao = readLine()?: ""
+            println("historias (H) || caça níquel (C) || roleta russa (R) ||")
+            opcao = (readLine()?: "").uppercase()
 
-            if (opcao == "historias"){
+            if (opcao == "H"){
                 this.historia()
-            } else if(opcao == "roleta russa") {
+            } else if (opcao == "C") {
+                this.cacaNiquel()
+            } else if(opcao == "R") {
                 this.roletaRussa()
             }
         } else {
-            println("historias || ")
-            opcao = readLine()?: ""
+            println("historias (H) || caça níquel (C) ||")
+            opcao = (readLine()?: "").uppercase()
 
-            if (opcao == "historias"){
+            if (opcao == "H"){
                 this.historia()
+            } else if (opcao == "C") {
+                this.cacaNiquel()
             }
         }
     }
