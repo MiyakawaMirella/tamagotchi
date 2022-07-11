@@ -462,7 +462,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         //arrumando o que eu tinha copiado errado
         if (insanidade >= 4){
             do {
-                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || ímpar ou par (I) || roleta russa (R)")
+                println("historias (H) || caça níquel (C) || blackjack(b) || pedra/papel/tesoura (P) || ímpar ou par (I) || roleta russa (R)")
                 opcao = (readLine()?: "").uppercase()
 
                 if (opcao == "H"){
@@ -475,6 +475,8 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                     this.imparOuPar()
                 }  else if (opcao == "R"){
                     this.roletaRussa()
+                } else if (opcao == "B"){
+                    this.blackjack()
                 } else {
                     println("Opção inválida")
                 }
@@ -483,7 +485,7 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
 
         } else {
             do {
-                println("historias (H) || caça níquel (C) || pedra/papel/tesoura (P) || ímpar ou par (I)")
+                println("historias (H) || caça níquel (C) || blackjack(B) || pedra/papel/tesoura (P) || ímpar ou par (I)")
                 opcao = (readLine()?: "").uppercase()
 
                 if (opcao == "H"){
@@ -494,11 +496,13 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
                     this.pedraPapelTesoura()
                 } else if (opcao == "I"){
                     this.imparOuPar()
+                } else if (opcao == "B"){
+                    this.blackjack()
                 } else {
                     println("Opção inválida")
                 }
 
-            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao =="I")
+            } while (opcao == "H" || opcao == "C" || opcao == "P" || opcao =="I" || opcao == "B")
         }
     }
 
