@@ -544,6 +544,66 @@ class Tamagushi(nome: String, comida: Int, saude: Int, idade: Int, vivo: Boolean
         }
 
     }
+    fun blackjack() {
+        if (dinheiro >= 3) {
+            println("Embaralhando...")
+            var black1 = readLine() ?: ""
+            print("Entregando cartas...")
+            var black2 = readLine() ?: ""
+            var cartasDisponiveis = listOf<Int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+            var listaMesa = mutableListOf<Int>()
+            var listaPlayer = mutableListOf<Int>()
+            var cartaMesa:Int = cartasDisponiveis.random()
+            var cartaPlayer:Int = cartasDisponiveis.random()
+            var resposta: String = ""
+
+            listaMesa.add(cartaMesa)
+            listaPlayer.add(cartaPlayer)
+
+            println("As suas cartas são: $listaPlayer")
+            println("As cartas da mesa são: $listaMesa")
+
+            println()
+            println("Quer outra carta? (S|N)")
+            val resp1 = readLine() ?: "0"
+            resposta = resp1.uppercase()
+
+            while (resposta != "N" && resposta != "n") {
+
+                cartaMesa = cartasDisponiveis.random()
+                cartaPlayer = cartasDisponiveis.random()
+
+                listaMesa.add(cartaMesa)
+                listaPlayer.add(cartaPlayer)
+
+                println("As suas cartas são: $listaPlayer")
+                println("As cartas da mesa são: $listaMesa")
+
+                println()
+                println("Quer outra carta? (S|N)")
+                val resp2 = readLine() ?:"0"
+                resposta = resp2.uppercase()
+            }
+            if((listaPlayer.sum())>21){
+                println("Você estourou! Perdeu, otário!! kkkkkk")
+                this.dinheiro -=3
+            } else if((listaMesa.sum())>21){
+                println("A mesa estourou! Você ganhou 3 dinheiros!!!")
+                this.dinheiro +=3
+            } else if ((listaMesa.sum()) > (listaPlayer.sum())) {
+                println("A mesa ganhou! Você perdeu 3 dinheiros kkk otario!")
+                this.dinheiro -= 3
+            } else if ((listaPlayer.sum()) > (listaMesa.sum())) {
+                println("Você ganhou, parabéns! Mais 3 dinheiros pra você!")
+                this.dinheiro += 3
+            } else {
+                println("Você empatou com a mesa! Ninguém ganhou nem perdeu...")
+            }
+
+        } else {
+            println("Você não tem dinheiro suficiente! kkk")
+        }
+    }
 }
 
 fun main(){
